@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:medicalapp/screens/homescreen.dart';
+import 'package:medicalapp/screens/splashscreen.dart';
 
 import 'auth/login.dart';
 late double height;
 late double width;
+
+var userName;
 void main() {
   runApp(const MyApp());
 }
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  Login(),
+      home:  SplashScreen(),
     );
   }
 }
