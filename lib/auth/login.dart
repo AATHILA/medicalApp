@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medicalapp/auth/registration.dart';
 import 'package:medicalapp/const/custom_button.dart';
 import 'package:medicalapp/const/custom_text.dart';
 
@@ -27,7 +28,8 @@ class _LoginState extends State<Login> {
           ClipPath(
             clipper: TopCurveClipper(),
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.4, // Slightly reduced
+              height:
+                  MediaQuery.of(context).size.height * 0.4, // Slightly reduced
               width: double.infinity,
               color: Colors.white,
               child: SafeArea(
@@ -59,13 +61,17 @@ class _LoginState extends State<Login> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    SizedBox(height: width*0.03),
+                    SizedBox(height: width * 0.03),
 
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomText(title: "Email",fontSize: width*0.045,color: Colors.black),
-                         SizedBox(height: width*0.03),
+                        CustomText(
+                          title: "Email",
+                          fontSize: width * 0.045,
+                          color: Colors.black,
+                        ),
+                        SizedBox(height: width * 0.03),
                         TextField(
                           controller: _emailController,
                           keyboardType: TextInputType.emailAddress,
@@ -73,38 +79,44 @@ class _LoginState extends State<Login> {
                             hintText: 'Write your Email',
                             hintStyle: TextStyle(
                               color: Colors.grey[400],
-                              fontSize: width*0.045,
+                              fontSize: width * 0.045,
                             ),
                             filled: true,
                             fillColor: Colors.white,
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(width*0.03),
+                              borderRadius: BorderRadius.circular(width * 0.03),
                               borderSide: BorderSide(color: Colors.grey[300]!),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(width*0.03),
+                              borderRadius: BorderRadius.circular(width * 0.03),
                               borderSide: BorderSide(color: Colors.grey[300]!),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(width*0.03),
-                              borderSide:  BorderSide(color: Colors.lightBlue.shade300),
+                              borderRadius: BorderRadius.circular(width * 0.03),
+                              borderSide: BorderSide(
+                                color: Colors.lightBlue.shade300,
+                              ),
                             ),
                             contentPadding: EdgeInsets.symmetric(
-                              horizontal: width*0.03,
-                              vertical: width*0.03,
+                              horizontal: width * 0.03,
+                              vertical: width * 0.03,
                             ),
                           ),
                         ),
                       ],
                     ),
 
-                     SizedBox(height: width*0.03),
+                    SizedBox(height: width * 0.03),
 
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomText(title: "Password",fontSize: width*0.045,color: Colors.black,),
-                         SizedBox(height: width*0.03),
+                        CustomText(
+                          title: "Password",
+                          fontSize: width * 0.045,
+                          color: Colors.black,
+                        ),
+                        SizedBox(height: width * 0.03),
                         TextField(
                           controller: _passwordController,
                           obscureText: _obscurePassword,
@@ -112,25 +124,29 @@ class _LoginState extends State<Login> {
                             hintText: 'Write your Password',
                             hintStyle: TextStyle(
                               color: Colors.grey[400],
-                              fontSize: width*0.045,
+                              fontSize: width * 0.045,
                             ),
                             filled: true,
                             fillColor: Colors.white,
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(width*0.03),
+                              borderRadius: BorderRadius.circular(width * 0.03),
                               borderSide: BorderSide(color: Colors.grey[300]!),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(width*0.03),
+                              borderRadius: BorderRadius.circular(width * 0.03),
                               borderSide: BorderSide(color: Colors.grey[300]!),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(width*0.03),
-                              borderSide:  BorderSide(color:Colors.lightBlue.shade300),
+                              borderRadius: BorderRadius.circular(width * 0.03),
+                              borderSide: BorderSide(
+                                color: Colors.lightBlue.shade300,
+                              ),
                             ),
                             suffixIcon: IconButton(
                               icon: Icon(
-                                _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                                _obscurePassword
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
                                 color: Colors.grey[600],
                               ),
                               onPressed: () {
@@ -140,116 +156,131 @@ class _LoginState extends State<Login> {
                               },
                             ),
                             contentPadding: EdgeInsets.symmetric(
-                              horizontal: width*0.03,
-                              vertical: width*0.03,
+                              horizontal: width * 0.03,
+                              vertical: width * 0.03,
                             ),
                           ),
                         ),
                       ],
                     ),
 
-                     SizedBox(height: width*0.03),
-                    
+                    SizedBox(height: width * 0.0001),
+
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {},
-                        child:  CustomText(title: "Forgot your password?",color: Colors.lightBlue.shade300,fontSize: width*0.035,)
-                      ),
-                    ),
-
-                     SizedBox(height: width*0.03),
-
-                   CustomButton(onPressed: () {
-                     Navigator.push(
-                       context,
-                       MaterialPageRoute(builder: (context) => HomeScreen()),
-                     );
-                   },
-                     text:"Sign In",
-                     backgroundColor: Colors.lightBlue.shade300,
-                   ),
-
-                     SizedBox(height: width*0.04),
-
-                    Center(
-                      child: Text(
-                        'Or continue with',
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: width*0.037,
+                        child: CustomText(
+                          title: "Forgot your password?",
+                          color: Colors.lightBlue.shade300,
+                          fontSize: width * 0.035,
                         ),
                       ),
                     ),
 
-                     SizedBox(height: width*0.04),
+                    SizedBox(height: width * 0.03),
+
+                    CustomButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                        );
+                      },
+                      text: "Sign In",
+                      backgroundColor: Colors.lightBlue.shade300,
+                    ),
+
+                    SizedBox(height: width * 0.04),
+
+                    Center(
+                      child: CustomText(title: "Or Continue with",fontWeight: FontWeight.bold,fontSize: width*0.038,)
+                    ),
+
+                    SizedBox(height: width * 0.04),
 
                     Row(
                       children: [
                         Expanded(
                           child: OutlinedButton.icon(
-                            onPressed: () {
-                            },
+                            onPressed: () {},
                             icon: SvgPicture.asset(
                               'assets/svg/facebook.svg',
-                              width: width*0.03,
-                              height: width*0.045,
+                              width: width * 0.03,
+                              height: width * 0.045,
                             ),
-                            label: CustomText(title: "Facebook",color: Colors.lightBlue.shade300,fontSize: width*0.037,),
+                            label: CustomText(
+                              title: "Facebook",
+                              color: Colors.lightBlue.shade300,
+                              fontSize: width * 0.037,
+                            ),
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Colors.white,
-                              padding: EdgeInsets.symmetric(vertical: width*0.04),
+                              padding: EdgeInsets.symmetric(
+                                vertical: width * 0.04,
+                              ),
                               side: BorderSide(color: Colors.grey[300]!),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(width*0.03),
+                                borderRadius: BorderRadius.circular(
+                                  width * 0.03,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                         SizedBox(width: width*0.03),
+                        SizedBox(width: width * 0.03),
                         Expanded(
                           child: OutlinedButton.icon(
-                            onPressed: () {
-                            },
+                            onPressed: () {},
                             icon: SvgPicture.asset(
                               'assets/svg/google.svg',
-                              width: width*0.03,
-                              height: width*0.045,
+                              width: width * 0.03,
+                              height: width * 0.045,
                             ),
-                            label: CustomText(title: "Google",color: Colors.lightBlue.shade300,fontSize: width*0.037,),
+                            label: CustomText(
+                              title: "Google",
+                              color: Colors.lightBlue.shade300,
+                              fontSize: width * 0.037,
+                            ),
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Colors.white,
-                              padding: EdgeInsets.symmetric(vertical: width*0.04),
+                              padding: EdgeInsets.symmetric(
+                                vertical: width * 0.04,
+                              ),
                               side: BorderSide(color: Colors.grey[300]!),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(width*0.03),
+                                borderRadius: BorderRadius.circular(
+                                  width * 0.03,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: width*0.03),
+                    SizedBox(height: width * 0.03),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "You don't have account? ",
-                          style: TextStyle(
-                            color: Colors.grey[600],
-                            fontSize: 14,
-                          ),
-                        ),
+                        CustomText(title: "You don't have account?",fontWeight: FontWeight.bold,fontSize: width*0.038),
                         TextButton(
                           onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Registration()),
+                            );
 
                           },
-                          child: CustomText(title: "Sign Up",fontSize: width*0.04,color: Colors.lightBlue.shade300,
-                          fontWeight: FontWeight.bold,),
+                          child: CustomText(
+                            title: "Sign Up",
+                            fontSize: width * 0.04,
+                            color: Colors.lightBlue.shade300,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
-                    SizedBox(height: width*0.03),
+                    SizedBox(height: width * 0.03),
                   ],
                 ),
               ),
@@ -259,8 +290,6 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-
-
 }
 
 class TopCurveClipper extends CustomClipper<Path> {
@@ -270,8 +299,10 @@ class TopCurveClipper extends CustomClipper<Path> {
     path.lineTo(0, size.height - 80);
 
     path.quadraticBezierTo(
-      size.width / 2, size.height + 20,
-      size.width, size.height - 80,
+      size.width / 2,
+      size.height + 20,
+      size.width,
+      size.height - 80,
     );
 
     path.lineTo(size.width, 0);
