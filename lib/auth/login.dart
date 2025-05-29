@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medicalapp/auth/registration.dart';
 import 'package:medicalapp/const/custom_button.dart';
 import 'package:medicalapp/const/custom_text.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
 import '../screens/homescreen.dart';
@@ -18,6 +19,19 @@ class _LoginState extends State<Login> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _obscurePassword = true;
+
+  setUsername()async{
+    String name=_emailController.text.split('@')[0];
+    userName = name[0].toUpperCase() + name.substring(1);
+
+    SharedPreferences prefs =await SharedPreferences.getInstance();
+    prefs.setString("username", userName);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomeScreen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +52,7 @@ class _LoginState extends State<Login> {
                   children: [
                     SvgPicture.asset(
                       "assets/svg/health-cross-firstaid.svg",
-                      color: Colors.lightBlue.shade300,
+                      color: Colors.lightBlue.shade800,
                       height: width * 0.2,
                     ),
                     SizedBox(height: width * 0.03),
@@ -94,7 +108,7 @@ class _LoginState extends State<Login> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(width * 0.03),
                               borderSide: BorderSide(
-                                color: Colors.lightBlue.shade300,
+                                color: Colors.lightBlue.shade800,
                               ),
                             ),
                             contentPadding: EdgeInsets.symmetric(
@@ -139,7 +153,7 @@ class _LoginState extends State<Login> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(width * 0.03),
                               borderSide: BorderSide(
-                                color: Colors.lightBlue.shade300,
+                                color: Colors.lightBlue.shade800,
                               ),
                             ),
                             suffixIcon: IconButton(
@@ -172,7 +186,7 @@ class _LoginState extends State<Login> {
                         onPressed: () {},
                         child: CustomText(
                           title: "Forgot your password?",
-                          color: Colors.lightBlue.shade300,
+                          color: Colors.lightBlue.shade800,
                           fontSize: width * 0.035,
                         ),
                       ),
@@ -182,13 +196,10 @@ class _LoginState extends State<Login> {
 
                     CustomButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
+                       setUsername();
                       },
                       text: "Sign In",
-                      backgroundColor: Colors.lightBlue.shade300,
+                      backgroundColor: Colors.lightBlue.shade800,
                     ),
 
                     SizedBox(height: width * 0.04),
@@ -211,7 +222,7 @@ class _LoginState extends State<Login> {
                             ),
                             label: CustomText(
                               title: "Facebook",
-                              color: Colors.lightBlue.shade300,
+                              color: Colors.lightBlue.shade800,
                               fontSize: width * 0.037,
                             ),
                             style: OutlinedButton.styleFrom(
@@ -239,7 +250,7 @@ class _LoginState extends State<Login> {
                             ),
                             label: CustomText(
                               title: "Google",
-                              color: Colors.lightBlue.shade300,
+                              color: Colors.lightBlue.shade800,
                               fontSize: width * 0.037,
                             ),
                             style: OutlinedButton.styleFrom(
@@ -265,6 +276,7 @@ class _LoginState extends State<Login> {
                         CustomText(title: "You don't have account?",fontWeight: FontWeight.bold,fontSize: width*0.038),
                         TextButton(
                           onPressed: () {
+
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => Registration()),
@@ -274,7 +286,7 @@ class _LoginState extends State<Login> {
                           child: CustomText(
                             title: "Sign Up",
                             fontSize: width * 0.04,
-                            color: Colors.lightBlue.shade300,
+                            color: Colors.lightBlue.shade800,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

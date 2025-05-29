@@ -38,7 +38,7 @@ class _RegistrationState extends State<Registration> {
                   children: [
                     SvgPicture.asset(
                       "assets/svg/health-cross-firstaid.svg",
-                      color: Colors.lightBlue.shade300,
+                      color: Colors.lightBlue.shade800,
                       height: width * 0.2,
                     ),
                     SizedBox(height: width * 0.03),
@@ -281,7 +281,7 @@ class _RegistrationState extends State<Registration> {
                                       width * 0.03,
                                     ),
                                     borderSide: BorderSide(
-                                      color: Colors.lightBlue.shade300,
+                                      color: Colors.lightBlue.shade800,
                                     ),
                                   ),
                                   contentPadding: EdgeInsets.symmetric(
@@ -329,7 +329,7 @@ class _RegistrationState extends State<Registration> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(width * 0.03),
                               borderSide: BorderSide(
-                                color: Colors.lightBlue.shade300,
+                                color: Colors.lightBlue.shade800,
                               ),
                             ),
                             suffixIcon: IconButton(
@@ -361,7 +361,7 @@ class _RegistrationState extends State<Registration> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text("Saved Successfully"),
-                            backgroundColor: Colors.lightBlue.shade300,
+                            backgroundColor: Colors.lightBlue.shade800,
                           ),
                         );
                         Navigator.push(
@@ -370,7 +370,7 @@ class _RegistrationState extends State<Registration> {
                         );
                       },
                       text: "Sign Up",
-                      backgroundColor: Colors.lightBlue.shade300,
+                      backgroundColor: Colors.lightBlue.shade800,
                     ),
 
                     SizedBox(height: width * 0.03),
@@ -398,7 +398,7 @@ class _RegistrationState extends State<Registration> {
                             ),
                             label: CustomText(
                               title: "Facebook",
-                              color: Colors.lightBlue.shade300,
+                              color: Colors.lightBlue.shade800,
                               fontSize: width * 0.037,
                             ),
                             style: OutlinedButton.styleFrom(
@@ -426,7 +426,7 @@ class _RegistrationState extends State<Registration> {
                             ),
                             label: CustomText(
                               title: "Google",
-                              color: Colors.lightBlue.shade300,
+                              color: Colors.lightBlue.shade800,
                               fontSize: width * 0.037,
                             ),
                             style: OutlinedButton.styleFrom(
@@ -466,7 +466,7 @@ class _RegistrationState extends State<Registration> {
                           child: CustomText(
                             title: "Sign In",
                             fontSize: width * 0.04,
-                            color: Colors.lightBlue.shade300,
+                            color: Colors.lightBlue.shade800,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:medicalapp/auth/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../const/custom_text.dart';
 import '../main.dart';
@@ -75,6 +77,25 @@ List<Map<String,dynamic>>categories=[
     "text":"Nephrology"
   },
 ];
+
+getUserName()async{
+  SharedPreferences prefs=await SharedPreferences.getInstance();
+  userName=prefs.getString('username');
+  setState(() {
+
+  });
+}
+removeUserName()async{
+  SharedPreferences prefs =await SharedPreferences.getInstance();
+  prefs.remove('username');
+  prefs.clear();
+
+}
+@override
+  void initState() {
+    getUserName();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,17 +109,18 @@ List<Map<String,dynamic>>categories=[
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText(title: 'Hi, Mohamed',
+            CustomText(title: 'Hi, $userName',
+              color: Colors.black,
             ),
             CustomText(title: "How are you today?",
-            color: Colors.blue.shade900,
+            color: Colors.lightBlue.shade800,
             ),
           ],
         ),
         actions: [
           Container(
-            height: width*0.06,
-            width: width*0.06,
+            height: width*0.08,
+            width: width*0.08,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(width*0.02),
               color: Colors.white,
@@ -109,7 +131,31 @@ List<Map<String,dynamic>>categories=[
             ),
             child: Icon(Icons.notifications_none_rounded,color: Colors.black,),
           ),
-          SizedBox(width: width*0.03,)
+          SizedBox(width: width*0.03,
+          ),
+          InkWell(
+            onTap: () {
+              removeUserName();
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+              setState(() {
+
+              });
+            },
+            child: Container(
+              height: width*0.08,
+              width: width*0.08,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(width*0.02),
+                  color: Colors.white,
+                  border: Border.all(
+                      color: Colors.grey.shade200
+                  )
+
+              ),
+              child: Icon(Icons.logout,color: Colors.black,),
+            ),
+          ),
+      SizedBox(width: width*0.03),
         ],
 
       ),
@@ -157,7 +203,7 @@ List<Map<String,dynamic>>categories=[
                           ),
                         ),
                       ),
-                                     CustomText(title: "Our  Services"),
+                                     CustomText(title: "Our  Services",),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -174,7 +220,7 @@ List<Map<String,dynamic>>categories=[
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SvgPicture.asset("assets/svg/clinicAppointment.svg",
-                                color: Colors.blue.shade900,
+                                color: Colors.lightBlue.shade800,
                                 height: width*0.06,
                                 ),
                                 CustomText(title: "Clinic appointment")
@@ -196,7 +242,7 @@ List<Map<String,dynamic>>categories=[
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SvgPicture.asset("assets/svg/onlineAppointment.svg",
-                                  color: Colors.blue.shade900,
+                                  color: Colors.lightBlue.shade800,
                                   height: width*0.06,
                                 ),
                                 CustomText(title: "Online appointment")
@@ -213,10 +259,10 @@ List<Map<String,dynamic>>categories=[
                           CustomText(title: "Offers"),
                           Text("See All",
                           style: TextStyle(
-                            color: Colors.blue.shade900,
+                            color:Colors.lightBlue.shade800,
                             fontSize: width*0.03,
                             fontWeight: FontWeight.w600,decoration: TextDecoration.underline,
-                            decorationColor: Colors.blue.shade900
+                            decorationColor:Colors.lightBlue.shade800,
                           ),
                           ),
                         ],
@@ -271,7 +317,7 @@ List<Map<String,dynamic>>categories=[
                                       width: width*0.15,
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
-                                          color: Colors.blue.shade900,
+                                          color: Colors.lightBlue.shade800,
                                           borderRadius: BorderRadius.circular(width*0.015)
                                       ),
                                       child: CustomText(title: "Get Offer",color: Colors.white,
@@ -297,7 +343,7 @@ List<Map<String,dynamic>>categories=[
                           CustomText(title: "Categories"),
                           Text("See All",
                             style: TextStyle(
-                                color: Colors.blue.shade900,
+                                color: Colors.lightBlue.shade800,
                                 fontSize: width*0.03,
                                 fontWeight: FontWeight.w600,decoration: TextDecoration.underline,
                                 decorationColor: Colors.blue.shade900
@@ -329,7 +375,7 @@ List<Map<String,dynamic>>categories=[
                               child: Row(
                                 children: [
                                   SvgPicture.asset(
-                                    color: Colors.blue.shade900,
+                                    color: Colors.lightBlue.shade800,
                                     categories[index]['icon'],
                                     // height: width*0.04,
                                   ),
@@ -347,7 +393,7 @@ List<Map<String,dynamic>>categories=[
                           CustomText(title: "Top Doctors"),
                           Text("See All",
                             style: TextStyle(
-                                color: Colors.blue.shade900,
+                                color:Colors.lightBlue.shade800,
                                 fontSize: width*0.03,
                                 fontWeight: FontWeight.w600,decoration: TextDecoration.underline,
                                 decorationColor: Colors.blue.shade900
@@ -435,7 +481,7 @@ List<Map<String,dynamic>>categories=[
                                       children: [
                                         Icon(Icons.favorite,color: Colors.red,),
                                         CustomText(title: "400 EGP",
-                                          color: Colors.blue.shade900,
+                                          color:Colors.lightBlue.shade800,
                                         )
                                       ],
                                     ),
