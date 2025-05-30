@@ -4,7 +4,6 @@ import 'package:medicalapp/auth/registration.dart';
 import 'package:medicalapp/const/custom_button.dart';
 import 'package:medicalapp/const/custom_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../main.dart';
 import '../screens/homescreen.dart';
 

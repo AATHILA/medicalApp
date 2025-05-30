@@ -101,10 +101,13 @@ removeUserName()async{
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        toolbarHeight: width*0.2,
+        toolbarHeight: width*0.15,
         backgroundColor: Colors.grey[200],
-        leading: CircleAvatar(
-          backgroundImage: AssetImage("assets/images/person.jpg"),
+        leading: Padding(
+          padding: EdgeInsets.only(left: width*0.02),
+          child: CircleAvatar(
+            backgroundImage: AssetImage("assets/images/person.jpg"),
+          ),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,7 +166,7 @@ removeUserName()async{
         padding: EdgeInsets.all(width*0.03),
         child: SingleChildScrollView(
           child: SizedBox(
-            height: width*3,
+            height: width*2.5,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -175,7 +178,9 @@ removeUserName()async{
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      SizedBox(height: width*0.01),
                       Container(
+                        height: width*0.14,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(width*0.03),
                           boxShadow: [
@@ -192,7 +197,7 @@ removeUserName()async{
                             filled: true,
                             fillColor: Colors.white,
                             prefixIcon: Icon(Icons.search,color: Colors.grey[400],),
-                            labelText: "Search for Doctor",
+                            labelText: "Search for 'Doctor'",
                             labelStyle: TextStyle(
                               color: Colors.grey[400]
                             ),
@@ -203,7 +208,8 @@ removeUserName()async{
                           ),
                         ),
                       ),
-                                     CustomText(title: "Our  Services",),
+
+                      CustomText(title: "Our  Services",color: Colors.blueGrey.shade700),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -223,7 +229,7 @@ removeUserName()async{
                                 color: Colors.lightBlue.shade800,
                                 height: width*0.06,
                                 ),
-                                CustomText(title: "Clinic appointment")
+                                CustomText(title: "Clinic appointment",color: Colors.blueGrey.shade700)
                               ],
                             )
 
@@ -245,7 +251,7 @@ removeUserName()async{
                                   color: Colors.lightBlue.shade800,
                                   height: width*0.06,
                                 ),
-                                CustomText(title: "Online appointment")
+                                CustomText(title: "Online appointment",color:Colors.blueGrey.shade700)
                               ],
                             )
 
@@ -256,7 +262,7 @@ removeUserName()async{
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CustomText(title: "Offers"),
+                          CustomText(title: "Offers",color: Colors.blueGrey.shade700),
                           Text("See All",
                           style: TextStyle(
                             color:Colors.lightBlue.shade800,
@@ -287,7 +293,7 @@ removeUserName()async{
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    CustomText(title: "Hello Doctor!"),
+                                    CustomText(title: "Hello Doctor!",color: Colors.blueGrey.shade700),
                                     Row(
                                       children: [
                                         Expanded(
@@ -299,11 +305,11 @@ removeUserName()async{
                                         Expanded(
                                           child:
                                           Container(
-                                            height: width*0.09,
-                                            width: width*0.08,
+                                            height: width*0.096,
+                                            width: width*0.096,
                                             decoration: BoxDecoration(
-                                                image: DecorationImage(image: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx_Ac4EqErfBGKoDPQu_9vC-Oaf2SqODDwfw&s"),
-                                                    fit: BoxFit.fill
+                                                image: DecorationImage(image: AssetImage("assets/images/doctorvideo.jpg"),
+                                                    fit: BoxFit.fitHeight
                                                 ),
                                                 color: Colors.white,
                                                 borderRadius: BorderRadius.circular(width*0.02)
@@ -340,7 +346,7 @@ removeUserName()async{
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CustomText(title: "Categories"),
+                          CustomText(title: "Categories",color: Colors.blueGrey.shade700),
                           Text("See All",
                             style: TextStyle(
                                 color: Colors.lightBlue.shade800,
@@ -362,7 +368,7 @@ removeUserName()async{
                               crossAxisCount: 2,
                             mainAxisSpacing: width*0.013,
                             crossAxisSpacing: width*0.013,
-                            childAspectRatio: 0.31
+                            childAspectRatio: 0.34
                           ),
                           itemBuilder: (BuildContext context, int index) {
                             return Container(
@@ -376,10 +382,10 @@ removeUserName()async{
                                 children: [
                                   SvgPicture.asset(
                                     color: Colors.lightBlue.shade800,
-                                    categories[index]['icon'],
+                                    categories[index]['icon'],width: width*0.06,
                                     // height: width*0.04,
                                   ),
-                                  CustomText(title: categories[index]['text'],)
+                                  CustomText(title: categories[index]['text'],color: Colors.blueGrey.shade700)
                                 ],
                               ),
                             );
@@ -390,7 +396,7 @@ removeUserName()async{
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CustomText(title: "Top Doctors"),
+                          CustomText(title: "Top Doctors",color: Colors.blueGrey.shade700),
                           Text("See All",
                             style: TextStyle(
                                 color:Colors.lightBlue.shade800,
@@ -401,6 +407,9 @@ removeUserName()async{
                           ),
                         ],
                       ),
+                      SizedBox(
+                        height: width*0.01,
+                      )
                     ],
                   ),
                 ),
@@ -442,7 +451,7 @@ removeUserName()async{
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      CustomText(title: doctorDetails[index]['name']),
+                                      CustomText(title: doctorDetails[index]['name'],color: Colors.blueGrey.shade700),
                                       CustomText(title: doctorDetails[index]['field'],
                                         fontSize: width*0.03,
                                         fontWeight: FontWeight.w500,
@@ -451,7 +460,7 @@ removeUserName()async{
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          Icon(Icons.location_on_sharp,color: Colors.blue,),
+                                          Icon(Icons.location_on_sharp,color: Colors.lightBlue.shade800),
                                           CustomText(title: doctorDetails[index]['location'],
                                             fontSize: width*0.03,
                                             fontWeight: FontWeight.w500,
@@ -462,7 +471,7 @@ removeUserName()async{
                                       Row(
                                         children: [
                                           Icon(Icons.star,color: Colors.yellow),
-                                          CustomText(title: doctorDetails[index]['rating'].toString())
+                                          CustomText(title: doctorDetails[index]['rating'].toString(),color: Colors.blueGrey.shade700)
                                         ],
                                       ),
                                       CustomText(title: "${doctorDetails[index]['reviews']} Reviews",
