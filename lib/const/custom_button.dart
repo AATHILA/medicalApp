@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../main.dart';
 
-
 class CustomButton extends StatelessWidget {
   late final double width;
   late final double height;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed; // Made nullable
   late final String text;
   late final Color? backgroundColor;
   late final Color? textColor;
@@ -15,11 +14,11 @@ class CustomButton extends StatelessWidget {
 
   CustomButton({
     super.key,
-    this.width=250,
+    this.width = 250,
     this.height = 50,
     required this.onPressed,
     this.text = 'Save',
-    this.backgroundColor=Colors.lightBlue,
+    this.backgroundColor = Colors.lightBlue,
     this.textColor,
     this.borderRadius,
     this.icon,
@@ -28,14 +27,15 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed,
+      onTap: onPressed, // This will now handle null properly
       child: Container(
-        width: width*0.7,
+        width: width * 0.7,
         height: height,
         decoration: BoxDecoration(
-          color: backgroundColor ?? Theme.of(context).primaryColor,
+          color: (backgroundColor ?? Theme.of(context).primaryColor)
+              .withOpacity(onPressed == null ? 0.5 : 1.0), // Visual feedback when disabled
           borderRadius: BorderRadius.circular(borderRadius ?? 8.0),
-          boxShadow: [
+          boxShadow: onPressed == null ? [] : [ // Remove shadow when disabled
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
               spreadRadius: 1,
@@ -44,24 +44,18 @@ class CustomButton extends StatelessWidget {
             ),
           ],
         ),
-        child:
-        Container(
+        child: Container(
           alignment: Alignment.center,
-          child:
-          Text(
+          child: Text(
             text,
             style: TextStyle(
-                color: textColor ?? Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: width*0.06
+              color: textColor ?? Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: width * 0.06,
             ),
           ),
         ),
-
       ),
     );
   }
 }
-
-
-

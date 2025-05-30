@@ -409,7 +409,7 @@ removeUserName()async{
                       ),
                       SizedBox(
                         height: width*0.01,
-                      )
+                      ),
                     ],
                   ),
                 ),
